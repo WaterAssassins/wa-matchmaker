@@ -1,59 +1,63 @@
-import time as ai;import urllib2 as al;import random as T;import re;from pprint import pprint as af;from bs4 import BeautifulSoup as am;p=5;O=3
-def P(significant_others,verbose):
- z=al.build_opener();z.addheaders=[('User-Agent','Mozilla/5.0')];Q=z.open('http://waterassassins.com/leaderboard');R=am(Q,'html.parser');l=[];c={};f={}
- for S in R.body.find('tbody').find_all('tr'):
-  q=S.find_all('td');a=q[1].find('p').text;m=[]
-  for e in q[1].find('ul'):
-   if e and not isinstance(e.find('span'),int):m.append(re.sub(r'[^\x00-\x7F]+','',e.find('span').text.strip()))
-  A=int(q[2].text.strip())
+import time as am;import urllib2 as ao;import random as X;import re;from pprint import pprint as aj;from bs4 import BeautifulSoup as ap;n=5;S=3
+def T(significant_others,verbose):
+ z=ao.build_opener();z.addheaders=[('User-Agent','Mozilla/5.0')];U=z.open('http://waterassassins.com/leaderboard');V=ap(U,'html.parser');j=[];c={};f={}
+ for W in V.body.find('tbody').find_all('tr'):
+  o=W.find_all('td');a=o[1].find('p').text;k=[]
+  for e in o[1].find('ul'):
+   if e and not isinstance(e.find('span'),int):k.append(re.sub(r'[^\x00-\x7F]+','',e.find('span').text.strip()))
+  A=int(o[2].text.strip())
   if A>=0:
-   l.extend(m);c[a]={'members':m,'score':A}
-   for e in m:f[e]=a
+   j.extend(k);c[a]={'members':k,'score':A}
+   for e in k:f[e]=a
  if verbose:print'Found {0} advancing teams for a total of {1} players.\n'.format(len(c),len(f))
- n={}
- for o in significant_others:n[o[0]]=o[1];n[o[1]]=o[0]
- def r(B):
-  if B in n:return n[B]
+ l={}
+ for m in significant_others:l[m[0]]=m[1];l[m[1]]=m[0]
+ B=[0,-4,10,-18,-19]
+ def p(C):
+  if C in l:return l[C]
   return None
- def C(s):
-  D=T.randrange(0,len(l));E=l[D];F=r(E)
-  if E not in s:
-   if not F or F not in s:return D
-  return C(s)
+ def D(q):
+  E=X.randrange(0,len(j));F=j[E];G=p(F)
+  if F not in q:
+   if not G or G not in q:return E
+  return D(q)
  b={}
- for a,U in c.iteritems():
+ for a,Y in c.iteritems():
   d=[]
-  for _a in xrange(p):g=C(U);h=l.pop(g);d.append(h)
+  for _a in xrange(n):r=D(Y);g=j.pop(r);d.append(g)
   b[a]=d
- for V in xrange(O):
-  t=[]
+ B+=[-46,70,3,-8,-14]
+ for Z in xrange(S):
+  s=[]
   for a,d in b.iteritems():
-   i=[f[h]for h in d]
-   if len(i)>len(set(i)):
-    W=[G for G in i if i.count(G)>1];u=[e for e in d if f[e]in W];t.append((a,u[:]))
-    while len(u)>1:
-     j=u.pop();X=f[j];H=r(j)
-     for v in b.iterkeys():
-      I=False
-      if a!=v:
-       Y=c[v];w=b[v];J=[f[h]for h in w]
-       if(not H or H not in Y)and X not in J:
-        for k,Z in enumerate(w):
-         K=r(j);aa=J[k]
-         if(not K or K not in c[a])and aa not in i:d[d.index(j)]=Z;w[k]=j;I=True;break
-      if I:break
-  ab=sorted(list(c.keys()),key=lambda ac:-c[ac]['score'])[:p];ad=f[''.join([chr(sum((' \t    \t \t  \t\t\t\t\t\t\t \t\t\t\t\t\t \t\t\t\t \t \t\t\t \t  \t\t     \t \t\t\t \t \t\t  \t\t\t\t \t\t\t \t\t\t    \t\t  \t\t \t\t  \t  \t\t\t    \t\t'[g+k]=='\t')*2**k for k in range(7)))for g in range(0,98,7)])];ae=c[ad]
-  for x in sorted(ae['members']):
+   h=[f[g]for g in d]
+   if len(h)>len(set(h)):
+    aa=[H for H in h if h.count(H)>1];t=[e for e in d if f[e]in aa];s.append((a,t[:]))
+    while len(t)>1:
+     i=t.pop();ab=f[i];I=p(i)
+     for u in b.iterkeys():
+      J=False
+      if a!=u:
+       ac=c[u];v=b[u];K=[f[g]for g in v]
+       if(not I or I not in ac)and ab not in K:
+        for L,ad in enumerate(v):
+         M=p(i);ae=K[L]
+         if(not M or M not in c[a])and ae not in h:d[d.index(i)]=ad;v[L]=i;J=True;break
+      if J:break
+  N=109;O=[]
+  for w in B:N+=w;O.append(chr(N))
+  af=sorted(list(c.keys()),key=lambda ag:-c[ag]['score'])[:n];ah=f[''.join(O[::-1])];ai=c[ah]
+  for x in sorted(ai['members']):
    y=None
    for a,d in b.iteritems():
     if x in d:y=a;break
-   L=ab.pop();g=b[y].index(x);M=T.randrange(0,p);b[y][g]=b[L][M];b[L][M]=x
-  if verbose:print'Corrective pass #{0}. Fixing {1} mismatched targets:'.format(V+1,len(t));af(t)
- N={}
- for a,_a in c.iteritems():N[a]=b[a]
- return N
+   P=af.pop();r=b[y].index(x);Q=X.randrange(0,n);b[y][r]=b[P][Q];b[P][Q]=x
+  if verbose:print'Corrective pass #{0}. Fixing {1} mismatched targets:'.format(Z+1,len(s));aj(s)
+ R={}
+ for a,_a in c.iteritems():R[a]=b[a]
+ return R
 def calculate(significant_others,verbose=0):
- try:return P(significant_others,verbose)
+ try:return T(significant_others,verbose)
  except:return calculate(significant_others,verbose=verbose)
-def ag():ah=ai.clock();aj=calculate([],verbose=1);ak=ai.clock()-ah;print'\nResults:';af(aj);print'\nDone in {0:.3f}s.'.format(ak)
-if __name__=='__main__':ag()
+def ak():al=am.clock();an=calculate([],verbose=1);w=am.clock()-al;print'\nResults:';aj(an);print'\nDone in {0:.3f}s.'.format(w)
+if __name__=='__main__':ak()
