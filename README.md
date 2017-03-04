@@ -12,12 +12,13 @@ To programmatically call the matchmaker, use the ```calculate()``` method. See t
 '''
 @param significant_others A list of tuples, with each tuple containing a couple: [('John Doe', 'Jane Doe'), ('Person A', 'Person B')]
 @param verbose If verbose = 1, print debug statements.
+@return A dictionary of results
 '''
 results = calculate(significant_others, verbose=0)
 
 ```
 
-The return value from the ```calculate()``` method is a dictionary. Each entry in the dictionary corresponds to the format {TeamName[String]:TeamTargets[List]}. Note: team members are not included in the dictionary, only team targets. See the snippet below for an example:
+The dictionary returned from the ```calculate()``` method follows the format {TeamName[String]:TeamTargets[List]}. See an example return value below.
 
 ```
 {
@@ -26,6 +27,8 @@ The return value from the ```calculate()``` method is a dictionary. Each entry i
 	...
 }
 ```
+
+_Note:_ team members are not included in the dictionary, only team targets.
 
 
 
