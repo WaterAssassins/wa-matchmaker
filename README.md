@@ -18,7 +18,7 @@ results = calculate(significant_others, verbose=0)
 
 ```
 
-The dictionary returned from the ```calculate()``` method follows the format {TeamName[String]:TeamTargets[List]}. See an example return value below.
+The dictionary returned from the ```calculate()``` method follows the format {TeamName[String]:TeamTargets[List]}. See an example return value below:
 
 ```
 {
